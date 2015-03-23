@@ -28,6 +28,7 @@ args, unknown = parser.parse_known_args()
 def doDownload(id, fileId):
     sess = requests.session()
     projectResponse = sess.get("http://minecraft.curseforge.com/mc-mods/%s" % (id), stream=True)
+    print(projectResponse)
     fileResponse = sess.get("%s/files/%s/download" % (projectResponse.url, fileId), stream=True)
     while fileResponse.is_redirect:
         source = fileResponse
