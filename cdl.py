@@ -17,10 +17,7 @@ minecraftPath=""
 parser = argparse.ArgumentParser(description="Download Curse modpack mods")
 #parser.add_argument("--manifest", help="manifest.json file from unzipped pack")
 #parser.add_argument("--nogui", dest="gui", action="store_false", help="Do not use gui to to select manifest")
-
-parser.add_argument('id', metavar='id',
-                   help='id of mod to be downloaded')
-args, unknown = parser.parse_known_args()
+args, query = parser.parse_known_args()
 
 def doDownloadByName(name):
 	
@@ -76,4 +73,4 @@ def doDownload(id):
     with open(str(minecraftPath + "mods/" + fileName), "wb+") as mod:
         mod.write(fileResponse.content)
 
-doDownloadByName(args.id)
+doDownloadByName("".join(query))
